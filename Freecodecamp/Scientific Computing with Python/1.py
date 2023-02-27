@@ -8,6 +8,13 @@
 #More Conditional Structures.
 #Python Functions.  
 #Build your own Functions. 
+#Loops and Iterations.
+#Iterations: Definite Loops. 
+#Iterations: Loop Idioms.
+#Iterations: More Patterns.
+#Strings in Python. 
+#Intermediate Strings.
+
 '''
 Sakai software. 
 Computer = Hardware + Software -> Data, Information...Networks. 
@@ -332,7 +339,28 @@ print(tiny)
 
 '''
 Def - store, invoke - reuse.
+Store and reuse pattern. You defined it, and later you called it. 
+Arguments - value we pass into the function as it's input when we call the function. 
+We use arguments so we can direct the function to do different kinds of work when we call it at different times. 
+We put the arguments in parenthesis after the name of the function.
+Parameters is variable which we use the function definition. 
+It is a "handle" that allows the code in function to access the arguments for a particular function invocation. 
 
+Return Values:
+Return a value to be used as the value of the function call in the calling expression. Return keyword is used for this. 
+
+Arguments, Parameters, Results: 
+>>>big = max("Hello World")
+>>>print(big)
+w
+def max(inp):
+  blah
+  blah
+  for x in y:
+    blah 
+    blah
+  return 'w' 
+=> "Hello World" is the argument, inp is the parameter, 'w' is the result.
 '''
 def print_lyrics():
     print("I'm a lumberjack, and I'm okay.")
@@ -358,5 +386,292 @@ print("Yo")
 print_lyrics()
 x = x+2 
 print(x)
- 
+
+big = max("Hello World")
+#Hello World is the argument.  
+
+def greet(lang):
+    if lang == "es":
+        print("Hola")
+    elif lang =='fr':
+        print("Bonjour")
+    else:
+        print("Hello")
+#This is putting stuff INTO the function.
+
+#To get something out. 
+def greet():
+    return "Hello"
+print(greet(), "Glenn")
+print(greet(), "Sally")
+
+def greet(lang):
+    if lang =='en':
+        return "Hola"
+    elif lang == 'fr':
+        return "Bonjour"
+    else:
+        return "Hello"
+print(greet('en'), "Glenn")
+
+def addtwo(a,b):
+    added = a+b
+    return added
+x = addtwo(3,5)
+print(x)
+
+'''
+Loops and Iterations. 
+
+n = 5
+while n>0:
+  print(n)
+  n = n-1
+print("Blastoff!")
+print(n)
+Output - 54321 Blastoff! 0
+
+Infinite loop. 
+Breaking out of a loop - break statement. 
+Continue statement - ends the current iteration and jumps to the top of the loop and starts the next iteration.
+While loops are called indefinite loops, because they keep going until a logical condition becomes False. 
+Indefinite loops. Keep going until a logical condition becomes false.  
+Definite loops. 
+'''
+n = 5
+while n>0:
+    print("Lather")
+    print("Rinse")
+print("Dry off")
+#Infinite loop. 
+#Zero trip. 
+
+while True:
+    line = input("> ")
+    if line == 'done':
+        break 
+    print(line)
+print("Done!")
+
+while True:
+    line = input('> ')
+    if line[0] == '#':
+        continue
+    if line == 'done':
+        break
+    print(line)
+print("Done!")
+#Infinite loop constructed with a break. 
+
+n = 0
+while True:
+    if n == 3:
+        break
+    print(n)
+    n = n + 1
+    
+'''
+Definite loops - for keywords. Finite number of times. 
+Definite loops iterate through the members of a set.
+Definite loops (for loops) have explicit iteration variables that change each time through a loop. These iterations variables move through the sequence or set. 
+Iteration variable "iterates" through the sequence (ordered set).
+Block (body) of code is executed once for each value in the sequence.
+Iteration variable moves through all of the values in the sequence. 
+'''
+for i in [5,4,3,2,1]:
+    print(i)
+print("Blastoff!")
+
+friends = ['Joseph', 'Glen', 'Sally']
+for friend in friends:
+    print("Happy new year: ", friend)
+print("done!")
+
+for i in [5,4,3,2,1]:
+    print(i)
+
+'''
+Loop Idioms.
+
+Smart loops.
+'''
+print("Before")
+for thing in [9,41,12,3,74,15]:
+    print(thing)
+print("After")
+
+largest_so_far = -1
+print("Before", largest_so_far)
+for the_num  in [9,41,12,3,74,15]:
+    if the_num > largest_so_far:
+        largest_so_far = the_num
+    print("After", largest_so_far)
+print("After", largest_so_far)
+
+smallest = None
+print("Before:", smallest)
+for itervar in [3, 41, 12, 9, 74, 15]:
+    if smallest is None or itervar < smallest:
+        smallest = itervar
+        break #Error.
+    print("Loop:", itervar, smallest)
+print("Smallest:", smallest)
+#Error above in code and won't work as expected.
+
+'''
+Average in a loop.
+Filtering in a loop. 
+Search using a boolean variable. 
+if statements return Boolean values. 
+None - nothing. Variable. 
+is and is not operators. 
+"is" is stronger than == as it demands equal not only in value but in type as well. 
+'''
+zork = 0
+print("Before", zork)
+for thing in [9, 41, 12, 3, 74, 15]:
+    zork = zork +1
+    print(zork, thing)
+print("After", zork)
+
+zork = 0
+print("Before", zork)
+for thing in [9, 41, 12, 3, 74, 15]:
+    zork = zork + thing
+    print(zork, thing)
+print("After", zork)
+
+count = 0
+sum = 0
+print('Before', count, sum)
+for value in [9, 41, 12, 3, 74, 15]:
+    count = count + 1
+    sum = sum + value
+    print(count, sum, value)
+print('After', count, sum, sum/count)
+
+print("Before")
+for value in [9, 41, 12, 3, 74, 15]:
+    if value > 20:
+        print("large number", value)
+print("After")
+
+found = False
+print('Before', found)
+for value in [9,41,12,3,74,15]:
+    if value == 3:
+        found = True
+    print(found, value)
+print("After", found)
+
+#Grabbing notion. 
+
+smallest_so_far = -1
+print("Before", smallest_so_far)
+for the_num  in [9,41,12,3,74,15]:
+    if the_num < smallest_so_far:
+        smallest_so_far = the_num
+    print("After", smallest_so_far)
+print("After", smallest_so_far)
+
+smallest = None
+print("Before")
+for value in [9,41,12,3,74,15]:
+    if smallest is None:
+        smallest = value
+    elif value < smallest:
+        smallest = value
+    print(smallest, value)
+print("After", smallest)
+
+'''
+Reading and converting. 
+Index. 
+Strings have length (len). 
+Looping through strings. 
+'''
+fruit = 'banana'
+letter = fruit[1]
+print(letter)
+
+x =3 
+w = fruit [x-1]
+print(w)
+
+fruit = 'banana'
+index = 0
+while index < len(fruit):
+    letter = fruit[index]
+    print(index, letter)
+    index = index + 1
+
+fruit = 'banana'
+for letter in fruit:
+    print(letter)
+    
+index = 0
+while index < len(fruit):
+    letter = fruit[index]
+    print(letter)
+    index = index + 1 
+    
+word = 'banana'
+count = 0
+for letter in word :
+    if letter == 'a':
+        count = count + 1
+print(count)
+
+for letter in 'banana':
+    print(letter)
+#b a n a n a
+    
+'''
+Slicing Strings. 
+UP TO BUT NOT INCLUDING.
+in as a logical operator. 
+String comparison. 
+Lexicographically less than or greater than.
+String Library. 
+'''
+s = 'Monty Python'
+print(s[0:4]) #Mont
+print(s[6:7]) #P
+print(s[6:20]) #Python
+print(s[:2])
+print(s[8:])
+print(s[:])
+
+a = 'Hello'
+b = a + 'There'
+print(b)
+c = a+ ' ' + 'There'
+print(c) 
+
+fruit = 'banana'
+'n' in fruit
+'m' in fruit
+'nan' in fruit
+if 'a' in fruit:
+    print("Found it!")
+
+if word == 'banana':
+    print("All right, bananas")
+if word <'banana':
+    print("Your word" + word + ', comes before banana')
+elif word > 'banana':
+    print("Your word," + word+ ', comes after banana.')
+else:
+    print("All right, banana.")
+
+#max function. 
+
+greet = 'Hello Bob'
+zap = greet.lower()
+print(zap)
+print(greet)
+print("Hello there".lower())
+
+
+  
 
