@@ -633,6 +633,22 @@ in as a logical operator.
 String comparison. 
 Lexicographically less than or greater than.
 String Library. 
+
+str.capitalize()
+str.center(width[, fillchar])
+str.endswitch(suffix[, start[, end]])
+str.find(sub[, start[, end]])
+str.lstrip([chars])
+str.lower()
+str.upper()
+str.strip([chars])
+str.rstrip([chars])
+str.replace(old,new[, count])
+
+Search and Replace. 
+Stripping Whitespace. 
+Prefixes. 
+Parsing and extracting. 
 '''
 s = 'Monty Python'
 print(s[0:4]) #Mont
@@ -672,6 +688,45 @@ print(zap)
 print(greet)
 print("Hello there".lower())
 
+stuff = "Hello World"
+type(stuff)
+dir(stuff) #Methods. 
+
+fruit = 'banana'
+pos = fruit.find('na')
+print(pos)
+aa = fruit.find('z')
+print(aa)
+
+greet = 'Hello Bob'
+nnn = greet.upper()
+print(nnn)
+www = greet.lower()
+print(www)
+
+greet = 'Hello Bob'
+nstr = greet.replace('Bob', 'Jane')
+print(nstr)
+nstr = greet.replace('o', 'X')
+print(nstr)
+
+greet = '   Hello Bob   '
+greet.lstrip()
+greet.rstrip()
+greet.strip()
+
+line = 'Please have a nice day'
+line.startswith("Please")
+line.startswith('p')
+
+data = 'From stephen.marquad@uct.ac.za Sa Jan  5 09:14:16 2008'
+atpos = data.find('@')
+print(atpos)
+sppos = data.find(' ', atpos)
+print(sppos)
+host = data[atpos + 1: sppos]
+print(host)
+#Parsing and extractng. 
 
   
 
