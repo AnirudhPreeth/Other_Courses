@@ -14,6 +14,9 @@
 #Iterations: More Patterns.
 #Strings in Python. 
 #Intermediate Strings.
+#Reading Flies.
+#Files as a Sequence.
+#Python Lists.
 
 '''
 Sakai software. 
@@ -649,6 +652,9 @@ Search and Replace.
 Stripping Whitespace. 
 Prefixes. 
 Parsing and extracting. 
+
+<type 'unicode'> => Python 2.7.10
+<class 'str'> => Python 3.5.1
 '''
 s = 'Monty Python'
 print(s[0:4]) #Mont
@@ -728,5 +734,105 @@ host = data[atpos + 1: sppos]
 print(host)
 #Parsing and extractng. 
 
-  
+''' 
+File Processing -> Text file can be thought of as a sequence of lines. 
+Opening a file -> open() function. 
+open() returns a "file handle" - variable used to perform operations on the file. 
+Returns a handle use to manipulate the file. 
+filename is a string. 
+Mode is optional and should be 'r' if we are planning to read the file and 'w' if we are going to write to the file.
+Newline character. \n
+File Processing. 
+Text files has newlines at end of each line. 
+'''
+handle = open(filename, mode)
+fhand = open('mbox.txt', 'r')
 
+fhand = open('mbox.txt')
+print(fhand)
+#<_io.TextIOWrapper name ='mbox.txt' mode='r' encodings='UTF-8'>
+
+stuff = "Hello\nWorld!"
+print(stuff)
+
+stuff = "X\nY"
+print(stuff)
+len(stuff)
+
+'''
+File Handle as a Sequence. 
+for statement to iterate through the sequence.
+Counting lines in a file. 
+Reading the whole file.
+'''
+xfile = open('mbox.txt')
+for cheese in xfile:
+    print(cheese)
+
+fhand = open('mbox.txt')
+count = 0
+for line in fhand:
+    count = count +1
+print("line count:", count)
+
+fhand = open('mbox-short.txt')
+inp = fhand.read()
+print(len(inp))
+print(inp[:20])
+
+#Search through a file
+fhand = open('mbox-short.txt')
+for line in fhand:
+    if line.startwith("From: "):
+        print(line)
+#Doesn't throw the new lines. 
+#strip. Allows you to throw whitespace. 
+fhand = open('mbox-short.txt')
+for line in fhand:
+    line = line.rstrip()
+    if line.startwith("From:"):
+        print(line)
+        
+#skipping with continue
+fhand = open('mbox-short.txt')
+for line in fhand:
+    line = line.rstrip()
+    if not line.startwith("From:"):
+        continue
+    print(line)
+
+#Using in to select lines.
+fhand = open('mbox-shor.txt')
+for line in fhand:
+    line = line.rstrip()
+    if not '@uct.ac.za' in line:
+        continue
+    print(line)
+    
+#Prompt for file name.
+fname = input("Enter the file name: ")
+fhand = open(fname)
+count = 0
+for line in fhand:
+    if line.startwith('Subject'):
+        count = count + 1
+print("There were", count, 'subject lines in', fname)
+
+#Bad file names.
+fname = input('Enter the file name: ')
+try:
+    fhand = open(fname)
+except:
+    print('File cannot be opened: ', fname)
+    quit()
+count = 0
+for line in fhand:
+    if line.startswith("Subject: "):
+        count = count +1
+print("There were", count, "subject lines in", fname)
+
+'''
+Python Lists. 
+
+
+'''
