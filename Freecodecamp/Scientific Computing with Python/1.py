@@ -834,5 +834,32 @@ print("There were", count, "subject lines in", fname)
 '''
 Python Lists. 
 
-
+Collection. Many variables. 
+Looking inside lists. 
 '''
+friends = ['Joseph', 'Glenn', 'Sally']
+carryon = ['socks', 'shirt', 'perfume']
+print([1, 24, 76])
+print(['red', 'yellow'])
+print(['red', 24, 98.6])
+print([1, [5,6], 7])
+print([])
+#We are using them all along. 
+for i in [5,4,3,2,1]:
+    print(i)
+print("Blastoff!")
+
+friends = ['Joseph', 'Glenn', 'Sally']
+for friend in friends:
+    print("Happy new year:", friend)
+print("Done!")
+
+z = ['Joseph', 'Glenn', 'Sally']
+for x in z:
+    print("Happy new year:", x)
+print("Done!")
+
+friends = ['Joseph', 'Glenn', 'Sally']
+print(friends[1])
+
+
