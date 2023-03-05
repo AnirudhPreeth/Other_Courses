@@ -28,6 +28,11 @@
 #Regular Expressions: Matching and Extracting Data.
 #Regular Expressions: Practical Applications. 
 #Networking with Python. 
+#Networking Protocol.
+#Networking: Write a Web Browser. 
+#Networking: Text Processing. 
+#Networking: Using urllib in Python.
+#Networking: Web Scraping with Python.
 '''
 Sakai software. 
 Computer = Hardware + Software -> Data, Information...Networks. 
@@ -1324,5 +1329,116 @@ print(y)
 #What will search for a "$" in a regular expression? \$
 
 '''
-Sockets in Python.
+Networking with Python.
+
+TCP - Transport Control Protocol.
+
+'''
+import socket
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysock.connect(('data.pr4e.org', 80))
+
+'''
+Networking Protocol.
+
+Application Protocol.
+Getting Data From The Server.
+What type of HTTP request is usually used to access a website? GET.
+'''
+#Next video, no code. 
+'''
+Networking: Write a Web Browser.
+'''
+import socket
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STEAM)
+mysock.connect(('data.pr4e.org',80))
+cmd = 'GET http://data.pr4e.org/romoe.txt HTTP/1.0\n\n'.encode()
+mysock.send(cmd)
+while True:
+    data = mysock.recv(512)
+    if (len(data) < 1):
+        break
+    print(data.decode())
+mysock.close()
+
+#What does the following code create?:
+import socket
+mysock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+mysock.connect(('data.pr4e.org', 80))
+cmd = 'GET http://data.pr4e.org/romeo.txt HTTP/1.0\r\n\r\n'.encode()
+mysock.send(cmd)
+while True:
+    data = mysock.recv(512)
+    if len(data) < 1:
+        break
+    print(data.decode(),end='')
+mysock.close()
+#A simple web browser.
+
+'''
+Networking: Text Processing. 
+
+ASCII
+Representing Simple Strings.
+Which type of encoding do most websites use? UTF-8.
+Multi-Byte Characters.
+Two Kinds of Strings in Python. 
+Python Strings to Bytes.
+'''
+print(ord('H'))
+print(ord('e'))
+print(ord('\n'))
+
+x = 'o|'
+type(x)
+x = u'o|'
+type(x)
+
+x = b'abc'
+type(x)
+x = 'o|'
+type(x)
+x = u'o|'
+type(x)
+
+while True:
+    data = mysock.recv(512)
+    if (len(data) < 1):
+        break
+    mystring = data.decode()
+    print(mystring)
+
+'''
+Networking: Using urllib in Python.
+
+Using urllib in Python.
+Reading Web Pages. 
+'''
+import urllib.request, urllib.parse, urllib.error
+fhand = urllib.request.urlopen('https://data.pr4e.org/romeo.txt')
+for line in fhand:
+    print(line.decode().strip())
+
+import urllib.request, urllib.parse, urllib.error
+fhand = urllib.request.urlopen('https://data.pr4e.org/romeo.txt')
+counts = dict()
+for line in fhand:
+    words = line.decode().split()
+    for word in words:
+        count[word] = counts.get(word, 0) + 1
+print(counts)
+
+import urllib.request
+fhand = urllib.request.urlopen('http://data.pr4e.org/romeo.txt')
+for line in fhand:
+    print(line.decode().strip())
+#Just contents of "romeo.txt".
+
+'''
+Networking: Web Scraping with Python.
+
+Scrape. 
+Scraping Web Pages.
+The Easy Way - Beautiful Soup. 
+BeautifulSoup Installation.
 '''
