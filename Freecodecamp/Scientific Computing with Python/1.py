@@ -17,7 +17,14 @@
 #Reading Flies.
 #Files as a Sequence.
 #Python Lists.
-
+#Working with Lists.
+#Strings and Lists.
+#Python Dictionaries.
+#Dictionaries: Common Applications.
+#Dictionaries and Loops.
+#The Tuples Collection.
+#Comparing and Sorting Tuples. 
+#Regular Expressions. 
 '''
 Sakai software. 
 Computer = Hardware + Software -> Data, Information...Networks. 
@@ -862,4 +869,368 @@ print("Done!")
 friends = ['Joseph', 'Glenn', 'Sally']
 print(friends[1])
 
+#Lists are mutable. Tey can be changed.
+fruit = 'Banana'
+x = fruit.lower()
+print(x)
+lotto = [2,14,26,41,63]
+print(lotto)
+lotto[2] = 28
+print(lotto)
+#Strings are not mutable. 
+
+greet = 'Hello Bob'
+print(len(greet))
+x = [1,2, 'joe',99]
+print(len(x))
+
+print(range(4))
+friends = ['Joseph', 'Glenn', 'Sally']
+print(len(friends))
+print(range(len(friends)))
+
+friends = ['Joseph', 'Glenn', 'Sally']
+for friend in friends:
+    print("Happy New Year:", friend)
+for i in range(len(friends)):
+    friend = friends[i]
+    print("Happy New Year:", friend)
+
+'''
+Working with Lists:
+
+Concatenating lists using +
+count - looks for certain values in the list
+extend - adds things to the end of the list
+index - looks things up in the list
+insert - allows them, the list to sort of be expanded in the middle
+pop - pulls things off the top
+remove - removes an item in the middle
+reverse - flips the order of them
+sort - puts them sor of into order based on the values
+'''
+a = [1,2,3]
+b = [4,5,6]
+c = a+b
+print(c)
+print(a)
+
+t = [9,41,12,3,74,15]
+t[1:3]
+t[:4]
+t[3:]
+t[:]
+
+x = list()
+type(x)
+dir(x)
+
+stuff = list()
+stuff.append('book')
+stuff.append(99)
+print(stuff)
+stuff.append('cookie')
+print(stuff)
+
+some = [1,9,21,10,16]
+9 in some
+15 in some
+20 not in some
+
+friends = ['Joseph', 'Glenn', 'Sally']
+friends.sort()
+print(friends)
+print(friends[1])
+ 
+nums = [3,41,12,9,74,15]
+print(len(nums))
+print(max(nums))
+print(min(nums))
+print(sum(nums))
+print(sum(nums)/len(nums))
+
+total = 0
+count = 0
+while True:
+    inp = input("Enter a number: ")
+    if inp == 'done':break
+    value = float(inp)
+    total = total + value
+    count = count+1
+average = total/count
+print("Average: ", average)
+
+numlist = list()
+while True:
+    inp = input("Enter a number:")
+    if inp == 'done':break
+    value = float(inp)
+    numlist.append(value)
+average = sum(numlist) / len(numlist)
+print('Average:', average)
+
+'''
+Strings and Lists.
+
+When you do not specify a delimiter, multiple spaces are treated like one delimiter.
+You can specify what delimiter character to use in the splitting.
+
+Double Split Pattern.
+'''
+abc = 'With three words'
+stuff = abc.split()
+print(stuff)
+print(len(stuff))
+print(stuff[0])
+
+print(stuff)
+for w in stuff:
+    print(w)
+
+line = 'A lot'
+etc = line.spit()
+print(etc)
+line = 'first;second;third'
+thing = line.split()
+print(thing)
+print(len(thing))
+thing = line.split(';')
+print(thing)
+print(len(thing))
+
+'''
+Python Dictionaries.
+
+List - Like pringles. 
+Dictionaries - Purse which has objects with labels. 
+Dictionaries have keys.
+Key-Value Pairs.
+'''
+purse = dict()
+purse['money'] = 12
+purse['candy'] = 3
+purse['tissues'] = 75
+print(purse)
+print(purse["candy"])
+purse['candy'] = purse["candy"] +2
+print(purse)
+
+lst = list()
+lst.append(21)
+lst.append(183)
+print(lst)
+lst[0] = 23
+print(lst)
+
+ddd = dict()
+ddd['age'] = 21
+ddd['course'] = 182
+print(ddd)
+ddd['age'] = 23
+print(ddd)
+
+jjj = { 'chuck': 1, 'fred': 42, 'jan':100}
+print(jjj)
+ooo={}
+print(ooo)
+
+'''
+Dictionaries: Common Applications
+
+Frequency of things. Histogram.
+get method for dictionaries. 
+Simplified counting with get()
+'''
+ccc = dict()
+ccc['csev'] = 1
+ccc['cwen'] = 1
+print(ccc)
+ccc['cwen'] = ccc['cwen'] +1
+print(ccc)
+
+ccc = dict()
+'csev' in ccc
+
+counts = dict()
+names = ['csev', 'cwen', 'csev', 'zqian', 'cwen']
+for name in names:
+    if name not in counts:
+        counts[name] = 1
+    else:
+        counts[name] = counts[name] +1
+print(counts)
+
+if name in counts:
+    x = counts [name]
+else:
+    x = 0
+x = counts.get(name,0)
+
+counts = dict()
+names = ['csev', 'cwen', 'csev', 'zqian', 'cwen']
+for name in names:
+    counts[name] = counts.get(name,0) + 1
+print(counts)
+
+counts = { 'quincy' : 1 , 'mrugesh' : 42, 'beau': 100, '0': 10}
+print(counts.get('kris', 0))
+
+'''
+Dictionaries and Loops.
+'''
+counts = dict()
+print('Enter a line of text: ')
+line = input('')
+words = line.split()
+print('Words:', words)
+print("Counting...")
+for word in words:
+    count[word] = counts.get(word,0) + 1
+print('Counts', counts)
+
+count = {'chuck':1, 'fred':42, 'jan':100}
+for key in counts:
+    print(key, count[key])
+    
+jjj = {'church':1, 'fred':42, 'jan':100}
+print(list(jjj))
+print(jjj.keys())
+print(jjj.values())
+print(jjj.items())
+
+jjj = {'church':1, 'fred':42, 'jan':100}
+for aaa,bbb in jjj.item():
+    print(aaa,bbb)
+    
+counts = { 'chuck' : 1 , 'annie' : 42, 'jan': 100}
+for key in counts:
+    if counts[key] > 10:
+        print(key, counts[key])
+
+'''
+The Tuples Collection. 
+
+Tuples are like lists.
+Tuples are immutable.
+'''
+x = ('Glenn', 'Sally', 'Joseph')
+print(x[2])
+y = (1,9,2)
+print(y)
+print(max(y))
+for iter in y:
+    print(iter)
+
+x = [9,8,7]
+x[2] = 6
+print(x)
+
+l = list()
+dir(1)
+t = tuple()
+dir(t)
+
+(x,y) = (4, 'fred')
+print(y)
+(a,b) = (99,98)
+print(a)
+
+d = dict()
+d['csev'] = 2
+d['cwen'] = 4
+for (k,v) in d.items():
+    print(k,v)
+tups = d.items()
+print(tups)
+
+(0,1,2) < (5,1,2)
+(0,1,2000000) < (0,3,4)
+('Jones', 'Sally') < ('Jones', 'Sam')
+('Jones', 'Sally') > ('Adams', 'Sam')
+
+d = dict()
+d['quincy'] = 1
+d['beau'] = 5
+d['kris'] = 9
+for (k,i) in d.items():
+    print(k, i)
+
+'''
+Comparing and Sorting Tuples.
+
+Sorting Lists of Tuples. 
+List comprehension creates a dynamic list. In this case, we make a list of reverse tuples and then sort it. 
+'''
+d = {'a':10, 'b':1, 'c':22}
+d.items()
+sorted(d.items())
+
+d = {'a':10, 'b':1, 'c':22}
+t = sorted(d.item())
+for k, v in sorted(d.items()):
+    print(k,v)
+    
+c = {'a':10, 'b':1, 'c':22}
+tmp = list()
+for k,v in c.item():
+    tmp.append(  (v,k)  )
+print(tmp)
+tmp = sorted(tmp, reverse=True)
+print(tmp)
+
+fhand = open('romeo.txt')
+counts = dict()
+for line in fhand:
+    words = line.split()
+    for word in words:
+        counts[word] = counts.get(word, 0) + 1
+lst = list()
+for key,val in counts.items():
+    newtp = (val,key)
+    lst.append(newtup)
+lst = sorted(lst, revese=True)
+for val, key in lst[:10]:
+    print(key, val)
+
+c = {'a':10, 'b':1, 'c':22}
+print(sorted([(v,k) for k,v in c.items()]))
+
+lst = []
+for key, val in counts.items():
+    newtup = (val, key)
+    lst.append(newtup)
+lst = sorted(lst, reverse=True)
+print(lst)
+#print( sorted( [ (v,k) for k,v in counts.items() ], reverse=True ) )
+
+'''
+Regular Expressions.
+
+Which regex matches only a white space character? - \s
+Wild-card characters. 
+'''
+hand = open('mbox-short.txt')
+for line in hand:
+    line = line.rstrip()
+    if line.find("From:") >= 0 :
+        print(line)
+
+import re
+hand = open('mbox-short.txt')
+for line in hand:
+    line = line.rstrip()
+    if re.search("From", line):
+        print(line)
+
+hand = open('mbox-short.txt')
+for line in hand:
+    line = line.rstrip()
+    if line.startwith("From:") >= 0 :
+        print(line)
+import re
+hand = open('mbox-short.txt')
+for line in hand:
+    line = line.rstrip()
+    if re.search("From", line):
+        print(line)
 
