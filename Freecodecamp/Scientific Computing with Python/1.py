@@ -25,6 +25,9 @@
 #The Tuples Collection.
 #Comparing and Sorting Tuples. 
 #Regular Expressions. 
+#Regular Expressions: Matching and Extracting Data.
+#Regular Expressions: Practical Applications. 
+#Networking with Python. 
 '''
 Sakai software. 
 Computer = Hardware + Software -> Data, Information...Networks. 
@@ -1208,6 +1211,7 @@ Regular Expressions.
 
 Which regex matches only a white space character? - \s
 Wild-card characters. 
+Fine-Tuning Your Match. 
 '''
 hand = open('mbox-short.txt')
 for line in hand:
@@ -1234,3 +1238,91 @@ for line in hand:
     if re.search("From", line):
         print(line)
 
+'''
+Regular Expressions: Matching and Extracting Data.
+
+Matching and Extracting Data.  
+Warning: Greedy Matching.
+^F.+:
+[0-9]+
+\s+@\s+
+Fine-Tuning String Extraction.
+'''
+import re
+x = 'My 2 favorite numbers are 19 and 42'
+y = re.findall('[0-9]',x)
+print(y)
+
+import re
+x = 'From: Using the: character'
+y = re.findall('^F.+:', x)
+print(y)
+
+#From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
+#y = re.findall('\S+@\S',x)
+#print(y)
+#y=re.findall('^From(\S+@\S+)',x)
+#print(y)
+
+import re
+s = 'A message from csev@umich.edu to cwen@iupui.edu about meeting @2PM'
+lst = re.findall('\\S+@\\S+', s)
+print(lst)
+#['csev@umich.edu', 'cwen@iupui.edu']
+
+'''
+Regular Expressions: Practical Applications.
+
+data = From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
+atop = data.find('@)
+print(atpos)
+sppos = data.find(' ',atpos)
+print(sppos)
+host = data[atpos+1: sppos]
+print(host)
+
+From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
+words = line.split()
+email = words[1]
+pieces = emails.split('@')
+print(pieces[1])
+
+The Double Split Pattern
+The Regex Version
+
+From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
+import re
+lin = 'From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008'
+y = re.findall('@([^ ]*))
+print(y)
+
+From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008
+import re
+lin = 'From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008'
+y = re.findall('^From.@([^ ]*), lin)
+print(y) 
+
+Spam Confidence. 
+Escape Character. 
+'''
+import re
+hand = open('mbox-short.txt')
+numlist = list()
+for line in hand:
+    line = line.rstrip()
+    stuff = re.findall('^X-DSPAM-Confidence: ([0-9.]+)',line)
+    if len(stuff) !=1:continue
+    num = float(stuff[0])
+    numlist.append(num)
+print('Maximum:', max(numlist))
+
+import re 
+x = 'We just recieved $10.00 for cookies.'
+y = re.findall('\$[0-9]',x)
+print(y)
+
+#What will search for a "$" in a regular expression? \$
+
+'''
+Sockets in Python.
+'''
