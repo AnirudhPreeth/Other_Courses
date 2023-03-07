@@ -33,6 +33,8 @@
 #Networking: Text Processing. 
 #Networking: Using urllib in Python.
 #Networking: Web Scraping with Python.
+#Using Web Services. 
+#Web Services: XML.
 '''
 Sakai software. 
 Computer = Hardware + Software -> Data, Information...Networks. 
@@ -1441,4 +1443,133 @@ Scrape.
 Scraping Web Pages.
 The Easy Way - Beautiful Soup. 
 BeautifulSoup Installation.
+'''
+import urllib.request, urllib.parse, urllib.error
+from bs4 import BeautifulSoup
+
+url = input("Enter -")
+html = urllib.request.urlopen(url).read()
+soup = BeautifulSoup(html, 'html.parser')
+#Retrieve all of anchor tags.
+tags - soup('a')
+for tag in tags:
+    print(tag.get('href', None))
+#What Python library is used for parsing HTML documents and extracting data from HTML documents? BeautifulSoup
+
+'''
+Using Web Services. 
+
+XML, JSON. 
+Wire Protocol. 
+Sending Data across the 'net'.
+Agreeing on a 'Wire Format'.
+What are the two most common ways to send data over the internet? JSON, XML.
+'''
+#Next video, no code. 
+'''
+Web Services: XML.
+
+XML - eXtensible Markup Language. 
+Started as a simplified subset of the Standard Generalized Markup Language (SGML).
+Tags, Attributes, Serialize/De-Serialize.
+
+Start Tag -> <person>
+End Tag -> <name>Chuck</name>
+Text content -> <phone type="intl">
+                 +1 734 303 4456
+                  </phone>
+Attribute -> <email hide="yes"/>
+Self Closing Tag -> </person>
+
+XML dosen't care about White-Space. 
+XML "Elements" or Nodes. 
+XML as a tree. 
+XML Test and Attributes. 
+XML as paths. 
+
+What is wrong with the following XML?:
+<person>
+  <name>Chuck</name>
+  <phone type="intl">
+    +1 734 303 4456
+  <email hide="yes" />
+</person>
+#Phone tag is missing closing tag.
+'''    
+#Next video, no code. 
+
+'''
+Web Services: XML Schema:
+
+XML Schema.
+XML Validation - XML Document, XML Schema Contract.
+
+<person>
+  <lastname>Severance</lastname>
+  <age>17</age>
+  <dateborn>2001-04-17</dateborn>
+</person>
+
+<xs:complexType name = 'person'>
+<xs:sequence>
+ <xs:element name='lastname' type='type'='xs:string'/>
+ <xs:element name='age' type='xs:integer'/>
+ <xs:element name='dateborn' type='xs:date'/>
+ <xs:sequence>
+</xs:complexType>
+
+XSD Structure. 
+
+<xs:element name='person'>
+ <xs:complexType>
+ <xs:sequence>
+  <xs:element name = 'full_name"type='xs:string'
+  minOccurs='1'maxOccurs='1'/>
+   <xs:element name='child_name'type='xs.string'
+   minOccurs='0'maxOccurs='10'/>
+   </xs:sequence>
+  </xs:complexType>
+<xs:element>
+
+<person>
+<full_name>Tove Refsne</full_name>
+<child_name>Hege</child_name>
+<child_name>Stale</child_name>
+<child_name>Jim</child_name>
+<child_name>Borge</child_name>
+</person>
+
+XSD Data Types. 
+<xs:element name="customer" type="xs.string"/>
+<xs:element name="start" type="xs.date"/>
+<xs:element name="startdate" type="xs.dateTime"/>
+<xs:element name="prize" type="xs.decimal"/>
+<xs:element name="weeks" type ="xs.integer"/>
+
+<customer>John Smith</customer?
+<start>2002-09024</start>
+<startdate>2002-05-30T09:30:10Z</startdate>
+<prize>999.50</prize>
+<weeks>30</weeks>
+
+2002-05-30T09:30:10Z
+'''
+import xml.etree.ElementTree as ET
+data = '''<person>
+  <name>Chuck</name>
+  <phone type="intl">
+    +1 734 303 4456
+  </phone>
+  <email hide="yes"/>
+</person>'''
+tree = ET.fromstring(data)
+print('Name:',tree.find('name').text)
+print('Attr:',tree.find('email').get('hide')) 
+
+import xml.etree.ElementTree as ET
+input = '''<stuff>
+   <users>
+     <user x="2">
+       <id>001</id>
+       <name>Chuck</name>
 '''
